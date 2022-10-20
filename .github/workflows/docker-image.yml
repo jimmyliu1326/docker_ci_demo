@@ -8,7 +8,7 @@ on:
 
 env:
   tag: 0.1
-  img_name: docker_ci_demo
+  img_name: ${{ github.repository }}
   
 
 jobs:
@@ -32,4 +32,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/$img_name:latest,${{ secrets.DOCKERHUB_USERNAME }}/$img_name:$tag
+          tags: ${{ env.img_name }}:latest,${{ env.img_name }}:${{ env.tag }}
